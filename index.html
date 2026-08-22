@@ -62,54 +62,58 @@ footer{text-align:center;background:#073f52;color:white;padding:25px}
 <label>मछली</label>
 <select id="fish"><option>रोहू</option><option>कतला</option><option>मृगल</option></select>
 <label>कितना चाहिए?</label>
-<input id="qty" type="number" min="1kg" step="0.5" value="1kg" placeholder="kg">
+<input id="qty" type="number" min="1" step="0.5" value="1" placeholder="kg">
 <label>Cleaning</label>
 <select id="clean"><option>साफ करके</option><option>Whole</option></select>
-<label>नाम</label>
-<input id="name" placeholder="आपका नाम">
-<label>मोबाइल नंबर</label>
-<input id="phone" type="tel" placeholder="10 अंकों का मोबाइल नंबर">
-<label>Delivery Address</label>
-<textarea id="address" rows="3" placeholder="पूरा पता"></textarea>
-<button class="btn" style="width:100%" onclick="sendOrder()">WhatsApp पर Order भेजें</button>
-<div id="msg"></div>
-</div>
+    <label>नाम</label>
+    <input id="name" placeholder="आपका नाम">
+    <label>मोबाइल नंबर</label>
+    <input id="phone" type="tel" placeholder="10 अंकों का मोबाइल नंबर">
+    <label>Delivery Address</label>
+    <textarea id="address" rows="3" placeholder="पूरा पता"></textarea>
+    <button class="btn" style="width:100%" onclick="sendOrder()">WhatsApp पर Order भेजें</button>
+    <div id="msg"></div>
+  </div>
 </section>
 
 <section>
-<h2>हमारा वादा</h2>
-<p style="text-align:center;max-width:700px;margin:auto">Order मिलने के बाद उपलब्धता के अनुसार मछली तालाब से निकाली जाएगी, साफ-सफाई के बाद hygienic packing में delivery की जाएगी।</p>
+  <h2>हमारा वादा</h2>
+  <p style="text-align:center;max-width:700px;margin:auto">Order मिलने के बाद उपलब्धता के अनुसार मछली तालाब से निकाली जाएगी।</p>
 </section>
 
-<footer>© 2026 Fresh Fish Delivery • अपना Business Name यहाँ डालें</footer>
+<footer>© 2026 Fresh Fish Delivery • apna business</footer>
 
 <script>
-const whatsappNumber = "+918305314285"; // +918305314285
+const whatsappNumber = "918305314285";
 
 function selectFish(f){
- document.getElementById("fish").value=f;
- document.getElementById("order").scrollIntoView({behavior:"smooth"});
+  document.getElementById("fish").value = f;
+  document.getElementById("order").scrollIntoView({behavior:"smooth"});
 }
+
 function sendOrder(){
- const f=document.getElementById("fish").value;
- const q=document.getElementById("qty").value;
- const c=document.getElementById("clean").value;
- const n=document.getElementById("name").value.trim();
- const p=document.getElementById("phone").value.trim();
- const a=document.getElementById("address").value.trim();
- if(!n||!p||!a){document.getElementById("msg").textContent="कृपया नाम, मोबाइल और पता भरें।";return;}
- const text=`नमस्ते, मुझे Fresh Fish का Order करना है.%0A%0Aमछली: ${f}%0Aमात्रा: ${q} kg%0ACleaning: ${c}%0Aनाम: ${n}%0Aमोबाइल: ${p}%0Aपता: ${a}`;
- window.open(`https://wa.me/${whatsappNumber}?text=${text}`,"_blank");
+  var f = document.getElementById("fish").value;
+  var q = document.getElementById("qty").value;
+  var c = document.getElementById("clean").value;
+  var n = document.getElementById("name").value.trim();
+  var p = document.getElementById("phone").value.trim();
+  var a = document.getElementById("address").value.trim();
+
+  if(!n || !p || !a){
+    alert("कृपया नाम, मोबाइल नंबर और पूरा पता भरें!");
+    return;
+  }
+
+  var msg = "नमस्ते! मुझे Fish Order करना है:%0A%0A" +
+            "🐟 मछली: " + f + "%0A" +
+            "⚖️ मात्रा: " + q + " kg%0A" +
+            "🔪 सफाई: " + c + "%0A" +
+            "👤 नाम: " + n + "%0A" +
+            "📞 मोबाइल: " + p + "%0A" +
+            "📍 पता: " + a;
+
+  window.open("https://api.whatsapp.com/send?phone=" + whatsappNumber + "&text=" + msg, "_blank");
 }
 </script>
-</body> <!-- Direct Call Link -->
-<p>
-  Call Us: <a href="tel:+918305314285">+91 8305314285</a>
-</p>
-
-<!-- Direct WhatsApp Chat Link -->
-<p>
-  WhatsApp: <a href="https://wa.me/8305314285" target="_blank">Chat on WhatsApp</a>
-</p>
-
+</body>
 </html>
