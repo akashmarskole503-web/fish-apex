@@ -1,119 +1,225 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fresh Fish Delivery</title>
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5fbff;color:#123}
-header{background:#087ea4;color:white;padding:16px 6%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}
-.logo{font-size:22px;font-weight:700}.cart{background:white;color:#087ea4;border:0;border-radius:22px;padding:10px 16px;font-weight:bold}
-.hero{padding:55px 7%;background:linear-gradient(135deg,#dff7ff,#fff);text-align:center}
-.hero h1{font-size:38px;margin:10px 0}.hero p{font-size:18px}.btn{display:inline-block;background:#087ea4;color:#fff;text-decoration:none;padding:13px 22px;border-radius:8px;border:0;font-weight:bold;cursor:pointer}
-section{padding:35px 7%}h2{text-align:center;margin-bottom:25px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{background:white;border-radius:14px;padding:18px;box-shadow:0 5px 20px #0001}
-.fish-img{height:150px;border-radius:10px;background:linear-gradient(135deg,#bcefff,#eafaff);display:flex;align-items:center;justify-content:center;font-size:65px}
-.price{font-size:20px;font-weight:bold;margin:10px 0;color:#087ea4}
-.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;text-align:center}
-.feature{background:white;padding:20px;border-radius:12px;box-shadow:0 3px 12px #0001}
-.order{max-width:600px;margin:auto;background:white;padding:25px;border-radius:15px;box-shadow:0 5px 20px #0001}
-input,select,textarea{width:100%;padding:12px;margin:7px 0 14px;border:1px solid #ccd8de;border-radius:8px;font-size:15px}
-footer{text-align:center;background:#073f52;color:white;padding:25px}
-#msg{margin-top:12px;font-weight:bold}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fish Marketplace - मछली बाजार</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; }
+    body { background-color: #f0f4f8; color: #333; padding-bottom: 50px; }
+    header { background: linear-gradient(135deg, #0288d1, #01579b); color: white; text-align: center; padding: 25px 15px; }
+    header h1 { font-size: 24px; margin-bottom: 5px; }
+    .container { max-width: 700px; margin: 15px auto; padding: 0 12px; }
+    
+    .nav-tabs { display: flex; gap: 10px; margin-bottom: 15px; }
+    .tab-btn { flex: 1; padding: 12px; font-size: 15px; font-weight: bold; border: none; border-radius: 8px; cursor: pointer; background: #e1f5fe; color: #0277bd; transition: 0.2s; }
+    .tab-btn.active { background: #0288d1; color: white; }
+
+    .card { background: white; border-radius: 10px; padding: 18px; margin-bottom: 15px; box-shadow: 0 3px 8px rgba(0,0,0,0.06); }
+    h2 { font-size: 18px; color: #01579b; margin-bottom: 12px; border-bottom: 2px solid #e1f5fe; padding-bottom: 6px; }
+
+    .form-group { margin-bottom: 12px; }
+    label { display: block; font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+    input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; }
+    
+    .btn { width: 100%; padding: 12px; border: none; border-radius: 6px; font-size: 15px; font-weight: bold; cursor: pointer; }
+    .btn-green { background-color: #25d366; color: white; }
+    .btn-blue { background-color: #0288d1; color: white; }
+    .btn-red { background-color: #e53935; color: white; margin-top: 10px; }
+
+    .product-card { border: 1px solid #b3e5fc; border-radius: 8px; padding: 12px; margin-bottom: 12px; background: #fafafa; }
+    .product-card h3 { font-size: 17px; color: #0277bd; }
+    .badge { display: inline-block; background: #e0f2f1; color: #00796b; padding: 3px 8px; border-radius: 12px; font-size: 12px; font-weight: bold; margin: 4px 0; }
+    .seller-info { font-size: 13px; color: #666; margin: 6px 0; }
+    .price-tag { font-size: 16px; font-weight: bold; color: #e65100; margin: 4px 0; }
+  </style>
 </head>
 <body>
-<header>
-  <div class="logo">🐟 Fresh Fish Delivery</div>
-  <button class="cart" onclick="document.getElementById('order').scrollIntoView()">Order Now</button>
-</header>
 
-<div class="hero">
-  <div style="font-size:65px">🐟</div>
-  <h1>सीधे तालाब से आपके घर तक</h1>
-  <p>Fresh fish • साफ करके • भरोसेमंद home delivery</p>
-  <a class="btn" href="#products">आज की मछली देखें</a>
-</div>
+  <header>
+    <h1>🐟 ऑनलाइन मछली बाजार (Marketplace)</h1>
+    <p>स्थानीय विक्रेताओं से सीधे ताज़ा मछली खरीदें या बेचें</p>
+  </header>
 
-<section>
-<h2>हम पर भरोसा क्यों करें?</h2>
-<div class="features">
- <div class="feature">🎣<h3>अपना तालाब</h3><p>मछली सीधे हमारे अपने तालाब से।</p></div>
- <div class="feature">🧊<h3>Fresh Delivery</h3><p>Ice box में सुरक्षित delivery।</p></div>
- <div class="feature">🔪<h3>Cleaning</h3><p>आपकी पसंद के अनुसार साफ और कटिंग।</p></div>
- <div class="feature">📱<h3>Easy Order</h3><p>Website या WhatsApp से order करें।</p></div>
-</div>
-</section>
+  <div class="container">
+    <div class="nav-tabs">
+      <button class="tab-btn active" id="btn-market" onclick="switchTab('market')">🛒 मछली खरीदें (Market)</button>
+      <button class="tab-btn" id="btn-seller" onclick="switchTab('seller')">💼 विक्रेता लॉगिन (Seller Panel)</button>
+    </div>
 
-<section id="products">
-<h2>आज की Fresh Fish</h2>
-<div class="products">
- <div class="card"><div class="fish-img">🐟</div><h3>रोहू</h3><div class="price">₹180 / kg</div><p>Whole / Cleaned उपलब्ध</p><button class="btn" onclick="selectFish('रोहू')">Order</button></div>
- <div class="card"><div class="fish-img">🐟</div><h3>कतला</h3><div class="price">₹200 / kg</div><p>Whole / Cleaned उपलब्ध</p><button class="btn" onclick="selectFish('कतला')">Order</button></div>
- <div class="card"><div class="fish-img">🐟</div><h3>मृगल</h3><div class="price">₹170 / kg</div><p>Whole / Cleaned उपलब्ध</p><button class="btn" onclick="selectFish('मृगल')">Order</button></div>
-</div>
-<p style="text-align:center;margin-top:20px">* Demo rates हैं—अपने वास्तविक rates यहाँ बदलें।</p>
-</section>
+    <!-- 1. BUYER MARKETPLACE VIEW -->
+    <div id="market-view">
+      <div class="card">
+        <h2>उपलब्ध ताज़ा मछली (Available Listings)</h2>
+        <div id="product-list">
+          <!-- Products load here dynamically -->
+        </div>
+      </div>
+    </div>
 
-<section id="order">
-<h2>Order करें</h2>
-<div class="order">
-<label>मछली</label>
-<select id="fish"><option>रोहू</option><option>कतला</option><option>मृगल</option></select>
-<label>कितना चाहिए?</label>
-<input id="qty" type="number" min="1" step="0.5" value="1" placeholder="kg">
-<label>Cleaning</label>
-<select id="clean"><option>साफ करके</option><option>Whole</option></select>
-    <label>नाम</label>
-    <input id="name" placeholder="आपका नाम">
-    <label>मोबाइल नंबर</label>
-    <input id="phone" type="tel" placeholder="10 अंकों का मोबाइल नंबर">
-    <label>Delivery Address</label>
-    <textarea id="address" rows="3" placeholder="पूरा पता"></textarea>
-    <button class="btn" style="width:100%" onclick="sendOrder()">WhatsApp पर Order भेजें</button>
-    <div id="msg"></div>
+    <!-- 2. SELLER LOGIN & DASHBOARD VIEW -->
+    <div id="seller-view" style="display: none;">
+      <!-- Auth Screen -->
+      <div class="card" id="seller-auth">
+        <h2>विक्रेता लॉगिन / नया खाता (Seller Login)</h2>
+        <div class="form-group">
+          <label>विक्रेता/दुकान का नाम</label>
+          <input id="seller-name" placeholder="उदा. आकाश फिश सेंटर">
+        </div>
+        <div class="form-group">
+          <label>WhatsApp मोबाइल नंबर (10 अंक)</label>
+          <input id="seller-phone" type="tel" placeholder="8305314285">
+        </div>
+        <div class="form-group">
+          <label>क्षेत्र / शहर (Location)</label>
+          <input id="seller-loc" placeholder="उदा. सिवनी / बरघाट">
+        </div>
+        <button class="btn btn-blue" onclick="loginSeller()">डैशबोर्ड में प्रवेश करें</button>
+      </div>
+
+      <!-- Dashboard Screen -->
+      <div class="card" id="seller-dashboard" style="display: none;">
+        <h2>➕ अपनी मछली लिस्ट करें (Add Fish Item)</h2>
+        <p style="font-size: 13px; color: green; margin-bottom: 10px;">लॉगिन: <b id="dash-seller-name"></b> (<span id="dash-seller-phone"></span>)</p>
+
+        <div class="form-group">
+          <label>मछली का नाम</label>
+          <input id="item-fish" placeholder="उदा. ताज़ा रोहू / कतला / झींगा">
+        </div>
+        <div class="form-group">
+          <label>कीमत (Price प्रति किलो)</label>
+          <input id="item-price" type="number" placeholder="उदा. 220">
+        </div>
+        <div class="form-group">
+          <label>सफाई / कटिंग विवरण</label>
+          <select id="item-cleaning">
+            <option value="साफ़ और कटिंग उपलब्ध">साफ़ और कटिंग उपलब्ध</option>
+            <option value="केवल साबुत मछली (Whole)">केवल साबुत मछली (Whole)</option>
+          </select>
+        </div>
+        <button class="btn btn-green" onclick="addProduct()">मछली लिस्ट करें (Publish)</button>
+        <button class="btn btn-red" onclick="logoutSeller()">लॉगआउट करें</button>
+      </div>
+    </div>
   </div>
-</section>
 
-<section>
-  <h2>हमारा वादा</h2>
-  <p style="text-align:center;max-width:700px;margin:auto">Order मिलने के बाद उपलब्धता के अनुसार मछली तालाब से निकाली जाएगी।</p>
-</section>
+  <script>
+    // Demo Initial Data
+    const defaultProducts = [
+      { id: 1, fish: "रोहू (Rohu)", price: "240", cleaning: "साफ़ और कटिंग उपलब्ध", seller: "आकाश फिश स्टोर", phone: "918305314285", loc: "सिवनी" },
+      { id: 2, fish: "कतला (Katla)", price: "280", cleaning: "साफ़ और कटिंग उपलब्ध", seller: "बरघाट फिश फार्म", phone: "918305314285", loc: "बरघाट" }
+    ];
 
-<footer>© 2026 Fresh Fish Delivery • apna business</footer>
+    let products = JSON.parse(localStorage.getItem("fish_marketplace_items")) || defaultProducts;
+    let currentSeller = JSON.parse(localStorage.getItem("current_seller")) || null;
 
-<script>
-const whatsappNumber = "918305314285";
+    function renderProducts() {
+      const container = document.getElementById("product-list");
+      if (products.length === 0) {
+        container.innerHTML = "<p style='color:#777; text-align:center;'>अभी कोई मछली उपलब्ध नहीं है।</p>";
+        return;
+      }
 
-function selectFish(f){
-  document.getElementById("fish").value = f;
-  document.getElementById("order").scrollIntoView({behavior:"smooth"});
-}
+      container.innerHTML = products.map(item => `
+        <div class="product-card">
+          <h3>🐟 ${item.fish}</h3>
+          <div class="price-tag">₹${item.price} / किलो</div>
+          <span class="badge">📍 ${item.loc}</span>
+          <span class="badge">🔪 ${item.cleaning}</span>
+          <div class="seller-info">विक्रेता: <b>${item.seller}</b></div>
+          <button class="btn btn-green" style="margin-top:8px;" onclick="orderViaWhatsApp('${item.seller}', '${item.phone}', '${item.fish}', '${item.price}')">
+            📱 सीधे इस विक्रेता से WhatsApp पर खरीदें
+          </button>
+        </div>
+      `).join('');
+    }
 
-function sendOrder(){
-  var f = document.getElementById("fish").value;
-  var q = document.getElementById("qty").value;
-  var c = document.getElementById("clean").value;
-  var n = document.getElementById("name").value.trim();
-  var p = document.getElementById("phone").value.trim();
-  var a = document.getElementById("address").value.trim();
+    function switchTab(tab) {
+      if (tab === 'market') {
+        document.getElementById("market-view").style.display = "block";
+        document.getElementById("seller-view").style.display = "none";
+        document.getElementById("btn-market").classList.add("active");
+        document.getElementById("btn-seller").classList.remove("active");
+        renderProducts();
+      } else {
+        document.getElementById("market-view").style.display = "none";
+        document.getElementById("seller-view").style.display = "block";
+        document.getElementById("btn-market").classList.remove("active");
+        document.getElementById("btn-seller").classList.add("active");
+        checkSellerAuth();
+      }
+    }
 
-  if(!n || !p || !a){
-    alert("कृपया नाम, मोबाइल नंबर और पूरा पता भरें!");
-    return;
-  }
+    function loginSeller() {
+      const name = document.getElementById("seller-name").value.trim();
+      let phone = document.getElementById("seller-phone").value.trim();
+      const loc = document.getElementById("seller-loc").value.trim();
 
-  var msg = "नमस्ते! मुझे Fish Order करना है:%0A%0A" +
-            "🐟 मछली: " + f + "%0A" +
-            "⚖️ मात्रा: " + q + " kg%0A" +
-            "🔪 सफाई: " + c + "%0A" +
-            "👤 नाम: " + n + "%0A" +
-            "📞 मोबाइल: " + p + "%0A" +
-            "📍 पता: " + a;
+      if (!name || !phone || !loc) {
+        alert("कृपया सभी विवरण भरें!");
+        return;
+      }
+      if (phone.length === 10) phone = "91" + phone;
 
-  window.open("https://api.whatsapp.com/send?phone=" + whatsappNumber + "&text=" + msg, "_blank");
-}
-</script>
+      currentSeller = { name, phone, loc };
+      localStorage.setItem("current_seller", JSON.stringify(currentSeller));
+      checkSellerAuth();
+    }
+
+    function checkSellerAuth() {
+      if (currentSeller) {
+        document.getElementById("seller-auth").style.display = "none";
+        document.getElementById("seller-dashboard").style.display = "block";
+        document.getElementById("dash-seller-name").innerText = currentSeller.name;
+        document.getElementById("dash-seller-phone").innerText = currentSeller.phone;
+      } else {
+        document.getElementById("seller-auth").style.display = "block";
+        document.getElementById("seller-dashboard").style.display = "none";
+      }
+    }
+
+    function addProduct() {
+      const fish = document.getElementById("item-fish").value.trim();
+      const price = document.getElementById("item-price").value.trim();
+      const cleaning = document.getElementById("item-cleaning").value;
+
+      if (!fish || !price) {
+        alert("मछली का नाम और कीमत भरें!");
+        return;
+      }
+
+      const newProduct = {
+        id: Date.now(),
+        fish,
+        price,
+        cleaning,
+        seller: currentSeller.name,
+        phone: currentSeller.phone,
+        loc: currentSeller.loc
+      };
+
+      products.unshift(newProduct);
+      localStorage.setItem("fish_marketplace_items", JSON.stringify(products));
+
+      document.getElementById("item-fish").value = "";
+      document.getElementById("item-price").value = "";
+      alert("मछली सफलतापूर्वक लिस्ट हो गई!");
+      switchTab('market');
+    }
+
+    function logoutSeller() {
+      localStorage.removeItem("current_seller");
+      currentSeller = null;
+      checkSellerAuth();
+    }
+
+    function orderViaWhatsApp(sellerName, sellerPhone, fishName, price) {
+      const msg = `नमस्ते ${sellerName}!%0A%0Aमुझे ऑनलाइन मछली बाजार से आपकी लिस्टिंग देखकर मछली खरीदनी है:%0A▫️ मछली: ${fishName}%0A▫️ दर: ₹${price}/kg%0A%0Aकृपया बताएं कि डिलीवरी कैसे मिलेगी?`;
+      window.open(`https://api.whatsapp.com/send?phone=${sellerPhone}&text=${msg}`, "_blank");
+    }
+
+    // Initialize
+    renderProducts();
+  </script>
 </body>
 </html>
