@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fresh Fish Delivery</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5fbff;color:#123}
+header{background:#087ea4;color:white;padding:16px 6%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}
+.logo{font-size:22px;font-weight:700}.cart{background:white;color:#087ea4;border:0;border-radius:22px;padding:10px 16px;font-weight:bold}
+.hero{padding:55px 7%;background:linear-gradient(135deg,#dff7ff,#fff);text-align:center}
+.hero h1{font-size:38px;margin:10px 0}.hero p{font-size:18px}.btn{display:inline-block;background:#087ea4;color:#fff;text-decoration:none;padding:13px 22px;border-radius:8px;border:0;font-weight:bold;cursor:pointer}
+section{padding:35px 7%}h2{text-align:center;margin-bottom:25px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
+.card{background:white;border-radius:14px;padding:18px;box-shadow:0 5px 20px #0001}
+.fish-img{height:150px;border-radius:10px;background:linear-gradient(135deg,#bcefff,#eafaff);display:flex;align-items:center;justify-content:center;font-size:65px}
+.price{font-size:20px;font-weight:bold;margin:10px 0;color:#087ea4}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px;text-align:center}
+.feature{background:white;padding:20px;border-radius:12px;box-shadow:0 3px 12px #0001}
+.order{max-width:600px;margin:auto;background:white;padding:25px;border-radius:15px;box-shadow:0 5px 20px #0001}
+input,select,textarea{width:100%;padding:12px;margin:7px 0 14px;border:1px solid #ccd8de;border-radius:8px;font-size:15px}
+footer{text-align:center;background:#073f52;color:white;padding:25px}
+#msg{margin-top:12px;font-weight:bold}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">🐟 Fresh Fish Delivery</div>
+  <button class="cart" onclick="document.getElementById('order').scrollIntoView()">Order Now</button>
+</header>
+
+<div class="hero">
+  <div style="font-size:65px">🐟</div>
+  <h1>सीधे तालाब से आपके घर तक</h1>
+  <p>Fresh fish • साफ करके • भरोसेमंद home delivery</p>
+  <a class="btn" href="#products">आज की मछली देखें</a>
+</div>
+
+<section>
+<h2>हम पर भरोसा क्यों करें?</h2>
+<div class="features">
+ <div class="feature">🎣<h3>अपना तालाब</h3><p>मछली सीधे हमारे अपने तालाब से।</p></div>
+ <div class="feature">🧊<h3>Fresh Delivery</h3><p>Ice box में सुरक्षित delivery।</p></div>
+ <div class="feature">🔪<h3>Cleaning</h3><p>आपकी पसंद के अनुसार साफ और कटिंग।</p></div>
+ <div class="feature">📱<h3>Easy Order</h3><p>Website या WhatsApp से order करें।</p></div>
+</div>
+</section>
+
+<section id="products">
+<h2>आज की Fresh Fish</h2>
+<div class="products">
+ <div class="card"><div class="fish-img">🐟</div><h3>रोहू</h3><div class="price">₹180 / kg</div><p>Whole / Cleaned उपलब्ध</p><button class="btn" onclick="selectFish('रोहू')">Order</button></div>
+ <div class="card"><div class="fish-img">🐟</div><h3>कतला</h3><div class="price">₹200 / kg</div><p>Whole / Cleaned उपलब्ध</p><button class="btn" onclick="selectFish('कतला')">Order</button></div>
+ <div class="card"><div class="fish-img">🐟</div><h3>मृगल</h3><div class="price">₹170 / kg</div><p>Whole / Cleaned उपलब्ध</p><button class="btn" onclick="selectFish('मृगल')">Order</button></div>
+</div>
+<p style="text-align:center;margin-top:20px">* Demo rates हैं—अपने वास्तविक rates यहाँ बदलें।</p>
+</section>
+
+<section id="order">
+<h2>Order करें</h2>
+<div class="order">
+<label>मछली</label>
+<select id="fish"><option>रोहू</option><option>कतला</option><option>मृगल</option></select>
+<label>कितना चाहिए?</label>
+<input id="qty" type="number" min="1" step="0.5" value="1" placeholder="kg">
+<label>Cleaning</label>
+<select id="clean"><option>साफ करके</option><option>Whole</option></select>
+<label>नाम</label>
+<input id="name" placeholder="आपका नाम">
+<label>मोबाइल नंबर</label>
+<input id="phone" type="tel" placeholder="10 अंकों का मोबाइल नंबर">
+<label>Delivery Address</label>
+<textarea id="address" rows="3" placeholder="पूरा पता"></textarea>
+<button class="btn" style="width:100%" onclick="sendOrder()">WhatsApp पर Order भेजें</button>
+<div id="msg"></div>
+</div>
+</section>
+
+<section>
+<h2>हमारा वादा</h2>
+<p style="text-align:center;max-width:700px;margin:auto">Order मिलने के बाद उपलब्धता के अनुसार मछली तालाब से निकाली जाएगी, साफ-सफाई के बाद hygienic packing में delivery की जाएगी।</p>
+</section>
+
+<footer>© 2026 Fresh Fish Delivery • अपना Business Name यहाँ डालें</footer>
+
+<script>
+const whatsappNumber = "919999999999"; // यहाँ अपना WhatsApp नंबर डालें
+
+function selectFish(f){
+ document.getElementById("fish").value=f;
+ document.getElementById("order").scrollIntoView({behavior:"smooth"});
+}
+function sendOrder(){
+ const f=document.getElementById("fish").value;
+ const q=document.getElementById("qty").value;
+ const c=document.getElementById("clean").value;
+ const n=document.getElementById("name").value.trim();
+ const p=document.getElementById("phone").value.trim();
+ const a=document.getElementById("address").value.trim();
+ if(!n||!p||!a){document.getElementById("msg").textContent="कृपया नाम, मोबाइल और पता भरें।";return;}
+ const text=`नमस्ते, मुझे Fresh Fish का Order करना है.%0A%0Aमछली: ${f}%0Aमात्रा: ${q} kg%0ACleaning: ${c}%0Aनाम: ${n}%0Aमोबाइल: ${p}%0Aपता: ${a}`;
+ window.open(`https://wa.me/${whatsappNumber}?text=${text}`,"_blank");
+}
+</script>
+</body>
+</html>
